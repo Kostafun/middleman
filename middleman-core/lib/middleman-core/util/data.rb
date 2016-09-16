@@ -57,7 +57,7 @@ module Middleman
           return [{}, nil]
         end
 
-        match = build_regex(frontmatter_delims).match(content) || {}
+        match = build_regex(frontmatter_delims).match(content.force_encoding("cp1251").encode("utf-8", undef: :replace)) || {}
 
         unless match[:frontmatter]
           case known_type
